@@ -1,0 +1,1424 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "version": "1.0.0",
+        "title": "Testing swagger",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": ""
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "paths": {
+        "/users/userRegister": {
+            "post": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Method used to register",
+                "security": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "contentType"
+                                ],
+                                "properties": {
+                                    "language": {
+                                        "type": "string",
+                                        "default": "en"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "default": "Neeraj Mehra"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "default": "test@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "default": "****"
+                                    },
+                                    "companyName": {
+                                        "type": "string",
+                                        "default": ""
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "default": "Indore MP"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "default": ""
+                                    },
+                                    "zipCode": {
+                                        "type": "string",
+                                        "default": "453331"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "default": "91441889**"
+                                    },
+                                    "logo": {
+                                        "type": "string",
+                                        "default": ""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/users/userLogin": {
+            "post": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Method used login user",
+                "security": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "contentType"
+                                ],
+                                "properties": {
+                                    "language": {
+                                        "type": "string",
+                                        "default": "en"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "default": "test@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "default": "12345678"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/users/changePassword": {
+            "patch": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Method used change user password",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "contentType"
+                                ],
+                                "properties": {
+                                    "language": {
+                                        "type": "string",
+                                        "default": "en"
+                                    },
+                                    "oldPassword": {
+                                        "type": "string",
+                                        "default": "test@gmail.com"
+                                    },
+                                    "newPassword": {
+                                        "type": "string",
+                                        "default": "12345678"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/users/getUserDetail": {
+            "get": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Method used to get user details by id",
+                "parameters": [
+                    {
+                        "name": "language",
+                        "default": "en",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/users/updateUserDetail": {
+            "put": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Method used to update user data",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "contentType"
+                                ],
+                                "properties": {
+                                    "language": {
+                                        "type": "string",
+                                        "default": "en"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "default": "Neeraj Mehra"
+                                    },
+                                    "companyName": {
+                                        "type": "string",
+                                        "default": "Alit pvt ltd"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "default": "Indore MP"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "default": "Indore"
+                                    },
+                                    "zipCode": {
+                                        "type": "string",
+                                        "default": "453331"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "default": "9144188937"
+                                    },
+                                    "logo": {
+                                        "type": "string",
+                                        "default": ""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/users/deleteUser": {
+            "delete": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Method used to delete user",
+                "parameters": [
+                    {
+                        "name": "language",
+                        "default": "en",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/users/upload": {
+            "post": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Upload a logo image",
+                "description": "This API allows users to upload a company logo. The uploaded file is stored on the server, and the file path is saved in the database.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "companyLogo"
+                                ],
+                                "properties": {
+                                    "previousFile": {
+                                        "type": "string",
+                                        "description": "Previos uploaded image for delete"
+                                    },
+                                    "companyLogo": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "description": "The image file to upload"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "File uploaded successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "File uploaded successfully"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "_id": {
+                                                    "type": "string",
+                                                    "example": "65a9b3f2d12e5c1234abcd56"
+                                                },
+                                                "userName": {
+                                                    "type": "string",
+                                                    "example": "John Doe"
+                                                },
+                                                "logo": {
+                                                    "type": "string",
+                                                    "example": "logo/companyLogo_1749640798499.jpg"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request - No file uploaded",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No file uploaded"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Something went wrong!"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/userLogOut": {
+            "get": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Method used to logout user.",
+                "parameters": [
+                    {
+                        "name": "language",
+                        "default": "en",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/customer/addCustomer": {
+            "post": {
+                "tags": [
+                    "CUSTOMER"
+                ],
+                "summary": "Method used to add customer",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "contentType"
+                                ],
+                                "properties": {
+                                    "language": {
+                                        "type": "string",
+                                        "default": "en"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "default": "Neeraj Mehra"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "default": "test@gmail.com"
+                                    },
+                                    "companyName": {
+                                        "type": "string",
+                                        "default": ""
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "default": "Indore MP"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "default": ""
+                                    },
+                                    "zipCode": {
+                                        "type": "string",
+                                        "default": "453331"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "default": "91441889**"
+                                    },
+                                    "creditLimit": {
+                                        "type": "number",
+                                        "default": 10000
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/customer/getCustomerDetail": {
+            "get": {
+                "tags": [
+                    "CUSTOMER"
+                ],
+                "summary": "Method used to get customer details by id",
+                "parameters": [
+                    {
+                        "name": "language",
+                        "default": "en",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "customerId",
+                        "default": "",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/customer/editCustomer": {
+            "put": {
+                "tags": [
+                    "CUSTOMER"
+                ],
+                "summary": "Method used to update customer details",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "contentType"
+                                ],
+                                "properties": {
+                                    "language": {
+                                        "type": "string",
+                                        "default": "en"
+                                    },
+                                    "customerId": {
+                                        "type": "string",
+                                        "default": "6849ada904316d6a7238cb3c"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "default": "Neeraj Mehra"
+                                    },
+                                    "companyName": {
+                                        "type": "string",
+                                        "default": "Alit pvt ltd"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "default": "Indore MP"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "default": "Indore"
+                                    },
+                                    "zipCode": {
+                                        "type": "string",
+                                        "default": "453331"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "default": "9144188937"
+                                    },
+                                    "creditLimit": {
+                                        "type": "number",
+                                        "default": 1000000
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/customer/getCustomerList": {
+            "post": {
+                "tags": [
+                    "CUSTOMER"
+                ],
+                "summary": "Method used to get all customer list with filter and paginations",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "contentType"
+                                ],
+                                "properties": {
+                                    "language": {
+                                        "type": "string",
+                                        "default": "en"
+                                    },
+                                    "search": {
+                                        "type": "string",
+                                        "default": "Neeraj Mehra"
+                                    },
+                                    "page": {
+                                        "type": "number",
+                                        "default": 1
+                                    },
+                                    "perPage": {
+                                        "type": "number",
+                                        "default": 10
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/customer/deleteCustomer": {
+            "delete": {
+                "tags": [
+                    "CUSTOMER"
+                ],
+                "summary": "Method used to delete customer",
+                "parameters": [
+                    {
+                        "name": "language",
+                        "default": "en",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "customerId",
+                        "default": "6849ae03596b93d83410e0d5",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/customer/customerCsvDownload": {
+            "post": {
+                "tags": [
+                    "CUSTOMER"
+                ],
+                "summary": "Method Used To download CSV of customer List",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "contentType"
+                                ],
+                                "properties": {
+                                    "language": {
+                                        "type": "string",
+                                        "default": "en"
+                                    },
+                                    "folderName": {
+                                        "type": "string",
+                                        "default": "csvFiles"
+                                    },
+                                    "page": {
+                                        "type": "integer",
+                                        "default": 1
+                                    },
+                                    "perPage": {
+                                        "type": "integer",
+                                        "default": 10
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/invoice/createInvoice": {
+            "post": {
+                "tags": [
+                    "INVOICE"
+                ],
+                "summary": "Method used to create invoice",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "customerId",
+                                    "items"
+                                ],
+                                "properties": {
+                                    "language": {
+                                        "type": "string",
+                                        "default": "en"
+                                    },
+                                    "customerId": {
+                                        "type": "string",
+                                        "example": "60d21b4667d0d8992e610c85"
+                                    },
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Mango"
+                                                },
+                                                "rate": {
+                                                    "type": "number",
+                                                    "example": 50
+                                                },
+                                                "quantity": {
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "discount": {
+                                                    "type": "number",
+                                                    "example": 0
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "remarks": {
+                                        "type": "string",
+                                        "example": "This is a test remark"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/invoice/updateInvoice": {
+            "put": {
+                "tags": [
+                    "INVOICE"
+                ],
+                "summary": "Method used to update invoice",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "invoiceId",
+                                    "customerId",
+                                    "items"
+                                ],
+                                "properties": {
+                                    "invoiceId": {
+                                        "type": "string",
+                                        "example": "60d21b4667d0d8992e610c88"
+                                    },
+                                    "language": {
+                                        "type": "string",
+                                        "default": "en"
+                                    },
+                                    "customerId": {
+                                        "type": "string",
+                                        "example": "60d21b4667d0d8992e610c85"
+                                    },
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Apple"
+                                                },
+                                                "rate": {
+                                                    "type": "number",
+                                                    "example": 100
+                                                },
+                                                "quantity": {
+                                                    "type": "number",
+                                                    "example": 5
+                                                },
+                                                "discount": {
+                                                    "type": "number",
+                                                    "example": 5
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "remarks": {
+                                        "type": "string",
+                                        "example": "Updated invoice"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/invoice/getInvoice": {
+            "get": {
+                "tags": [
+                    "INVOICE"
+                ],
+                "summary": "Method used to get invoice by ID",
+                "parameters": [
+                    {
+                        "name": "invoiceId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "60d21b4667d0d8992e610c88"
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "en"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/invoice/getAllInvoices": {
+            "post": {
+                "tags": [
+                    "INVOICE"
+                ],
+                "summary": "Method used to get all invoice list",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "page": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "limit": {
+                                        "type": "integer",
+                                        "example": 10
+                                    },
+                                    "search": {
+                                        "type": "string",
+                                        "example": "Daniel"
+                                    },
+                                    "customer": {
+                                        "type": "string",
+                                        "example": "60d21b4667d0d8992e610c85"
+                                    },
+                                    "startDate": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-06-01"
+                                    },
+                                    "endDate": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-06-30"
+                                    },
+                                    "sort": {
+                                        "type": "string",
+                                        "example": "-date"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "totalPages": {
+                                            "type": "integer"
+                                        },
+                                        "currentPage": {
+                                            "type": "integer"
+                                        },
+                                        "totalRecords": {
+                                            "type": "integer"
+                                        },
+                                        "totalAmount": {
+                                            "type": "number"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/invoice/deleteInvoice": {
+            "delete": {
+                "tags": [
+                    "INVOICE"
+                ],
+                "summary": "Method used to delete invoice by ID",
+                "parameters": [
+                    {
+                        "name": "invoiceId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "60d21b4667d0d8992e610c88"
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "en"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/invoice/generateInvoicePDF": {
+            "get": {
+                "tags": [
+                    "INVOICE"
+                ],
+                "summary": "Method used to generate invoice PDF",
+                "parameters": [
+                    {
+                        "name": "invoiceId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "60d21b4667d0d8992e610c88"
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "en"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "PDF stream",
+                        "content": {
+                            "application/pdf": {}
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/invoice/getInvoiceAnalytics": {
+            "get": {
+                "tags": [
+                    "INVOICE"
+                ],
+                "summary": "Method used to calculate invoice analytics for home page",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "monthlySales": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "_id": {
+                                                        "type": "string",
+                                                        "example": "2025-06"
+                                                    },
+                                                    "totalSales": {
+                                                        "type": "number",
+                                                        "example": 15000
+                                                    },
+                                                    "count": {
+                                                        "type": "integer",
+                                                        "example": 5
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "topCustomers": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "customerName": {
+                                                        "type": "string",
+                                                        "example": "Daniel"
+                                                    },
+                                                    "companyName": {
+                                                        "type": "string",
+                                                        "example": "Daniel Traders"
+                                                    },
+                                                    "totalAmount": {
+                                                        "type": "number",
+                                                        "example": 7500
+                                                    },
+                                                    "count": {
+                                                        "type": "integer",
+                                                        "example": 3
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
