@@ -304,7 +304,7 @@ export const deleteUser = async (req, res) => {
 
             if (deleteUser) {
                 logger.info(`deleteUser : User deleted successfully==> ${userId}`);
-                return ResponseHelper.success(res, HttpStatus.OK, language, 'User_Delete_Success', userData);
+                return ResponseHelper.success(res, HttpStatus.OK, language, 'User_Delete_Success', null);
             };
 
             logger.info(`deleteUser : Field to delete user==> ${userId}`);

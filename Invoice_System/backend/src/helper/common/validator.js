@@ -7,7 +7,7 @@ export const validator = (method) => {
                 body("email", "Email_Id_Required").not().notEmpty(),
                 body("password", "Password_Is_Required").not().notEmpty(),
                 body("name", "User_Name_Required").not().notEmpty(),
-                body("companyName", "Company_Name_Required").not().notEmpty(),
+                // body("companyName", "Company_Name_Required").not().notEmpty(),
             ]
         }
 
