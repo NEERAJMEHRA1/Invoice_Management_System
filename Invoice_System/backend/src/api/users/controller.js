@@ -97,7 +97,7 @@ export const userLogin = async (req, res) => {
     try {
 
         const { language, email, password } = req.body;
-
+        console.log("aaaaaaaaaaaaaaaaaaa")
         logger.info(`userLogin : Req body==>> ${JSON.stringify(req.body)}`);
 
         //valifation
@@ -331,6 +331,7 @@ export const uploadLogo = async (req, res) => {
     try {
         //decoded user id
         const userId = req.user.id;
+        const language = 'en';
 
         if (!req.file) {
             return ResponseHelper.error(res, HttpStatus.BAD_REQUEST, language, 'Please_Select_File', error.message);
@@ -365,10 +366,11 @@ export const uploadLogo = async (req, res) => {
         const savedUser = await saveProfile.save();
 
         const userData = new userResponse(savedUser);
-        logger.info(`####****uploadLogo : File uploaded successfully****####`); s
+        logger.info(`####****uploadLogo : File uploaded successfully****####`);
         return ResponseHelper.success(res, HttpStatus.OK, language, 'File_Uploaded_Successfully', userData);
 
     } catch (error) {
+        console.log(error)
         logger.error(`uploadLogo : Error==>> ${error}`);
         return ResponseHelper.error(res, HttpStatus.INTERNAL_SERVER_ERROR, 'en', 'Internal_Server_Error', error.message);
     }

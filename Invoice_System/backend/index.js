@@ -24,18 +24,20 @@ app.use(express.urlencoded({ limit: "200mb", extended: true }));
 //swagger set up
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
+
+//cors
+const corsOption = {
+    origin: "*",
+    credentials: true,
+    optionsSuccessStatus: 200
+}
+app.use(cors(corsOption));
+
 //main rout
 app.use("/users", userRouter);
 app.use("/customer", customerRouter);
 app.use("/invoice", invoiceRouter);
 
-//cors
-const corsOption = {
-    origin: "*",
-    Credential: true,
-    optionsSuccessStatus: 200
-}
-app.use(cors(corsOption));
 app.use("/assets", express.static("./assets"));
 
 const port = process.env.PORT || 3000;
