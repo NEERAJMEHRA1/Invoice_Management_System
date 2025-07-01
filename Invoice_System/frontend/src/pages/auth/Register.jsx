@@ -45,15 +45,21 @@ const Register = () => {
             setStatus({ message: 'Passwords do not match.', type: 'error' });
             return;
         }
-
         try {
-            await API.post('/users/userRegister', form);
+            const res = await API.post('/users/userRegister', form);
+
+            if (!res.data.status) {
+                setStatus({ message: res.data.message || 'Something went wrong.', type: 'error' });
+                return;
+            }
+
             setStatus({ message: 'Registration successful! Redirecting...', type: 'success' });
             setTimeout(() => navigate('/login'), 1500);
         } catch (err) {
             const msg = err?.response?.data?.message || 'Registration failed.';
             setStatus({ message: msg, type: 'error' });
         }
+
     };
 
     const alertColor =

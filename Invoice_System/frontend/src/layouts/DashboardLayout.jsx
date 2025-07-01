@@ -34,7 +34,7 @@ const DashboardLayout = () => {
 
     const handleDelete = async () => {
         try {
-            await API.delete('/users/updateUserDetail');
+            await API.delete('/users/deleteUser');
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             setConfirmDelete(false);
